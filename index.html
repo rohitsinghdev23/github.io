@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit Singh Dev | Digital Marketer & SEO Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      /* Dark/Midnight Theme (Default) */
+      --bg-main: #02040a;
+      --bg-grid: rgba(59, 130, 246, 0.04);
+      --bg-card: rgba(10, 14, 39, 0.7);
+      --bg-card-border: rgba(30, 58, 138, 0.35);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --color-accent: #3b82f6;
+      --color-accent-rgb: 59, 130, 246;
+      --color-accent-hover: #60a5fa;
+      --color-glow: rgba(59, 130, 246, 0.15);
+      --orb-1: rgba(6, 17, 49, 0.6);
+      --orb-2: rgba(2, 32, 102, 0.5);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 1px 1px 0 rgba(255, 255, 255, 0.05) inset;
+      --card-shadow-hover: 0 20px 40px -15px rgba(59, 130, 246, 0.25), 0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+      --button-3d-shadow: 0 4px 0 0 #1d4ed8, 0 10px 20px rgba(29, 78, 216, 0.3);
+      --button-3d-hover-shadow: 0 6px 0 0 #1d4ed8, 0 12px 24px rgba(29, 78, 216, 0.4);
+      --button-3d-active: 0 1px 0 0 #1d4ed8, 0 2px 4px rgba(29, 78, 216, 0.3);
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    [data-theme="light"] {
+      /* High-Contrast Light Theme */
+      --bg-main: #f8fafc;
+      --bg-grid: rgba(30, 58, 138, 0.03);
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-border: rgba(30, 58, 138, 0.15);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --color-accent: #1e3a8a;
+      --color-accent-rgb: 30, 58, 138;
+      --color-accent-hover: #3b82f6;
+      --color-glow: rgba(30, 58, 138, 0.08);
+      --orb-1: rgba(219, 234, 254, 0.8);
+      --orb-2: rgba(239, 246, 255, 0.8);
+      --card-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.1), 0 1px 1px 0 rgba(255, 255, 255, 0.8) inset;
+      --card-shadow-hover: 0 20px 40px -15px rgba(30, 58, 138, 0.15), 0 1px 1px 0 rgba(255, 255, 255, 0.9) inset;
+      --button-3d-shadow: 0 4px 0 0 #172554, 0 10px 20px rgba(30, 58, 138, 0.2);
+      --button-3d-hover-shadow: 0 6px 0 0 #172554, 0 12px 24px rgba(30, 58, 138, 0.3);
+      --button-3d-active: 0 1px 0 0 #172554, 0 2px 4px rgba(30, 58, 138, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      position: relative;
+    }
+
+    /* Grid Background */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Interactive Parallax Background Glows */
+    .parallax-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      z-index: 0;
+      pointer-events: none;
+      transition: transform 0.2s cubic-bezier(0.1, 0.8, 0.3, 1);
+      will-change: transform;
+    }
+    .orb-left {
+      width: 45vw;
+      height: 45vw;
+      background: var(--orb-1);
+      top: 10%;
+      left: -15%;
+    }
+    .orb-right {
+      width: 40vw;
+      height: 40vw;
+      background: var(--orb-2);
+      bottom: 15%;
+      right: -10%;
+    }
+
+    /* Structure & Typography */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 8rem 0 4rem 0;
+      position: relative;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      color: var(--text-primary);
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--color-accent);
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header & Sticky Navbar */
+    header {
+      position: fixed;
+      top: 1.5rem;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+    }
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--color-accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.75rem;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-primary);
+    }
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0.75rem;
+      right: 0.75rem;
+      height: 2px;
+      background: var(--color-accent);
+      border-radius: 1px;
+    }
+
+    /* Controls & Buttons */
+    .controls-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(var(--color-accent-rgb), 0.1);
+      border: 1px solid var(--bg-card-border);
+      transition: all 0.2s ease;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      background: rgba(var(--color-accent-rgb), 0.2);
+    }
+    .theme-toggle .icon-sun { display: none; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+    /* Hamburger Menu */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .burger span {
+      width: 25px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    /* 3D Glassmorphism Cards */
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1.5rem;
+      box-shadow: var(--card-shadow);
+      padding: 2.5rem;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .tilt-card {
+      will-change: transform;
+      transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    }
+    .tilt-card:hover {
+      box-shadow: var(--card-shadow-hover);
+      border-color: rgba(var(--color-accent-rgb), 0.5);
+    }
+    .card-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+      border-radius: 1.5rem;
+    }
+
+    /* 3D Pressed / Raised Button */
+    .btn-3d {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.875rem 2rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 1rem;
+      background: var(--color-accent);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: var(--button-3d-shadow);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .btn-3d:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--button-3d-hover-shadow);
+    }
+    .btn-3d:active {
+      transform: translateY(3px);
+      box-shadow: var(--button-3d-active);
+    }
+    .btn-3d.secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--bg-card-border);
+      background-image: linear-gradient(rgba(var(--color-accent-rgb), 0.05), rgba(var(--color-accent-rgb), 0.1));
+      box-shadow: 0 4px 0 0 var(--bg-card-border), 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .btn-3d.secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 0 var(--bg-card-border), 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .btn-3d.secondary:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 0 var(--bg-card-border), 0 2px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 3D Skill Pills/Chips */
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 2rem;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+      cursor: default;
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 500px;
+    }
+    .skill-chip:hover {
+      transform: translateY(-5px) translateZ(15px);
+      box-shadow: 0 10px 20px var(--color-glow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      border-color: var(--color-accent);
+      color: var(--text-primary);
+    }
+
+    /* Scroll Reveal Animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(50px) perspective(1000px) rotateX(8deg);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform, opacity;
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0) perspective(1000px) rotateX(0deg);
+    }
+
+    /* Hero Section with 3D Text Extrude */
+    #home {
+      min-height: 95vh;
+      display: flex;
+      align-items: center;
+      padding-top: 8rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-text {
+      transform-style: preserve-3d;
+    }
+    .hero-subtitle {
+      font-family: var(--font-heading);
+      color: var(--color-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-subtitle span {
+      width: 24px;
+      height: 2px;
+      background: var(--color-accent);
+    }
+    .text-3d {
+      font-family: var(--font-heading);
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      text-shadow: 
+        1px 1px 0px rgba(var(--color-accent-rgb), 0.5),
+        2px 2px 0px rgba(var(--color-accent-rgb), 0.4),
+        3px 3px 0px rgba(var(--color-accent-rgb), 0.3),
+        4px 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    /* 3D Layered CSS Illustration */
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      perspective: 1200px;
+      transform-style: preserve-3d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .layered-panel {
+      position: absolute;
+      border-radius: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--card-shadow);
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-style: preserve-3d;
+    }
+    .panel-base {
+      width: 280px;
+      height: 360px;
+      z-index: 2;
+      transform: rotateY(-15deg) rotateX(12deg) translateZ(0px);
+      background: linear-gradient(145deg, rgba(10,14,39,0.85) 0%, rgba(2,4,12,0.95) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+    .panel-float-top {
+      width: 180px;
+      height: 120px;
+      top: 15px;
+      left: 10px;
+      z-index: 4;
+      transform: rotateY(-15deg) rotateX(12deg) translateZ(40px);
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.5), rgba(59, 130, 246, 0.15));
+      border-color: rgba(var(--color-accent-rgb), 0.4);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .panel-float-bottom {
+      width: 200px;
+      height: 140px;
+      bottom: 25px;
+      right: 15px;
+      z-index: 3;
+      transform: rotateY(-15deg) rotateX(12deg) translateZ(25px);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Content details inside illustration */
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+    }
+    .stat-val {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .stat-bar {
+      height: 6px;
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .stat-fill {
+      height: 100%;
+      background: var(--color-accent);
+      border-radius: 3px;
+      width: 75%;
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 4rem;
+    }
+    .profile-card {
+      padding: 2rem;
+      text-align: center;
+    }
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #1e1b4b 100%);
+      margin: 0 auto 1.5rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 0 30px rgba(var(--color-accent-rgb), 0.3);
+      border: 4px solid var(--bg-card);
+    }
+    .profile-info-list {
+      list-style: none;
+      text-align: left;
+      margin-top: 2rem;
+    }
+    .profile-info-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .profile-info-list li:last-child {
+      border-bottom: none;
+    }
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-text {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Skills Section Categories */
+    .skills-categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .category-card {
+      height: 100%;
+    }
+    .category-title {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--color-accent);
+    }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Timeline Styling (Chronological oldest to newest) */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .timeline::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--bg-card-border), var(--color-accent), var(--bg-card-border));
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 2px;
+    }
+    .timeline-container {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    .timeline-container.left {
+      left: 0;
+    }
+    .timeline-container.right {
+      left: 50%;
+    }
+    .timeline-container::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right: -8px;
+      background-color: var(--bg-main);
+      border: 4px solid var(--color-accent);
+      top: 30px;
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 0 10px var(--color-accent);
+    }
+    .timeline-container.right::after {
+      left: -8px;
+    }
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--color-accent);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .timeline-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .timeline-company {
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
+    }
+    .timeline-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .timeline-skills {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .timeline-skills .mini-chip {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.625rem;
+      background: rgba(var(--color-accent-rgb), 0.1);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 4rem;
+    }
+    .contact-info-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .contact-info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 0.75rem;
+      background: rgba(var(--color-accent-rgb), 0.1);
+      border: 1px solid var(--bg-card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+    }
+    .contact-info-content h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .contact-info-content p {
+      font-size: 0.875rem;
+    }
+    .contact-social-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Contact Form Elements */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.875rem 1.25rem;
+      background: rgba(var(--color-accent-rgb), 0.03);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 0.75rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      transition: all 0.2s ease;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 15px var(--color-glow);
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(2, 4, 10, 0.9);
+      border-top: 1px solid var(--bg-card-border);
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-text {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* Floating Back-to-Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--button-3d-shadow);
+      cursor: pointer;
+      z-index: 90;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Custom Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--bg-card);
+      border: 1px solid var(--color-accent);
+      color: var(--text-primary);
+      padding: 0.75rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: var(--card-shadow);
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      backdrop-filter: blur(12px);
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 992px) {
+      .hero-grid, .about-grid, .skills-categories, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .hero-visual {
+        order: -1;
+        height: 380px;
+      }
+      .timeline::after {
+        left: 31px;
+      }
+      .timeline-container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+      }
+      .timeline-container.left, .timeline-container.right {
+        left: 0;
+      }
+      .timeline-container::after {
+        left: 23px;
+        right: auto;
+      }
+      .timeline-container.right::after {
+        left: 23px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 5rem 0 3rem 0;
+      }
+      .text-3d {
+        font-size: 3rem;
+      }
+      .burger {
+        display: flex;
+      }
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--bg-card-border);
+        border-top: none;
+        border-radius: 0 0 1.5rem 1.5rem;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: var(--card-shadow);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+      }
+      .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .footer-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Parallax Background Orbs -->
+  <div class="parallax-orb orb-left parallax-bg" data-speed="15" id="orb1"></div>
+  <div class="parallax-orb orb-right parallax-bg" data-speed="25" id="orb2"></div>
+
+  <!-- Sticky Header -->
+  <header>
+    <div class="container">
+      <nav class="nav-container">
+        <a href="#home" class="logo" id="logo-ref">
+          <span class="logo-dot"></span> Rohit Dev
+        </a>
+        
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="controls-group">
+          <button class="theme-toggle" id="theme-btn" aria-label="Toggle Theme">
+            <!-- Inline Lucide Icons: Sun / Moon -->
+            <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button class="burger" id="burger-btn" aria-label="Open Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <div class="container hero-grid">
+      <div class="hero-text reveal-on-scroll">
+        <div class="hero-subtitle">
+          <span></span> Rohit Singh Dev
+        </div>
+        <h1 class="text-3d">Digital<br>Marketer</h1>
+        <p class="hero-tagline">Learning to Grow Brands Online Through Search Engine Optimization (SEO) & Social Media</p>
+        
+        <div class="hero-actions">
+          <a href="#contact" class="btn-3d">
+            Contact Me
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/rohit-singh-dev-530613373/" target="_blank" class="btn-3d secondary">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <!-- Real 3D Layered CSS Illustration -->
+      <div class="hero-visual reveal-on-scroll">
+        <div class="layered-panel panel-base" id="base-layer">
+          <span class="stat-label">Web Performance</span>
+          <div class="stat-val">SEO Core</div>
+          <div style="margin-top: 1.5rem;">
+            <span class="stat-label">Analytics Traffic</span>
+            <div class="stat-val">+142%</div>
+            <div class="stat-bar"><div class="stat-fill"></div></div>
+          </div>
+        </div>
+        <div class="layered-panel panel-float-top" id="top-layer">
+          <span class="stat-label">Google Ads ROI</span>
+          <div class="stat-val" style="color: var(--color-accent);">4.8x</div>
+          <span class="stat-label" style="font-size: 0.65rem;">Campaign Optimization</span>
+        </div>
+        <div class="layered-panel panel-float-bottom" id="bottom-layer">
+          <span class="stat-label">Store Growth</span>
+          <div class="stat-val">Shopify</div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">
+            <span>Conversion</span>
+            <span style="color: #10b981;">+34%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="reveal-on-scroll">About Me</h2>
+      <div class="about-grid">
+        <div class="glass-card tilt-card profile-card reveal-on-scroll">
+          <div class="card-shine"></div>
+          <div class="profile-avatar">RS</div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Rohit Singh Dev</h3>
+          <p style="font-size: 0.875rem;">Digital Marketer & Specialist</p>
+          
+          <ul class="profile-info-list">
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Delhi, India
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              rsinghdev7@gmail.com
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              English & Hindi
+            </li>
+          </ul>
+        </div>
+
+        <div class="about-content reveal-on-scroll">
+          <p>Digital Marketing & SEO Professional passionate about helping businesses grow their online presence through effective <span class="highlight-text">Search Engine Optimization (SEO)</span>, content strategy, website management, and performance-driven marketing.</p>
+          <p>I bring hands-on experience managing online stores, optimizing product listings, improving overall website performance, and supporting high business growth through data-driven strategies. I actively utilize popular website-building platforms such as <span class="highlight-text">Shopify, WordPress, Wix,</span> and <span class="highlight-text">Weebly</span> to build, manage, and optimize professional business websites.</p>
+          <p>My extensive expertise spans <span class="highlight-text">Google Search Console, Google Analytics, Google Trends, Google Ads,</span> and <span class="highlight-text">Meta Ads</span>. As an active <span class="highlight-text">"Vibe Coder,"</span> I enthusiastically explore AI tools, automated solutions, and cutting-edge digital trends, believing firmly in continuous learning, relentless innovation, and creating real value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="reveal-on-scroll">Expertise & Skills</h2>
+      <div class="skills-categories reveal-on-scroll">
+        
+        <!-- Category 1 -->
+        <div class="glass-card tilt-card category-card">
+          <div class="card-shine"></div>
+          <h3 class="category-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            E-Commerce & CMS
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-chip">Store Management</div>
+            <div class="skill-chip">Shopify</div>
+            <div class="skill-chip">WordPress</div>
+            <div class="skill-chip">Wix Website Builder</div>
+            <div class="skill-chip">Weebly</div>
+            <div class="skill-chip">Content Management Systems (CMS)</div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="glass-card tilt-card category-card">
+          <div class="card-shine"></div>
+          <h3 class="category-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Search & Analytics
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-chip">Search Engine Optimization (SEO)</div>
+            <div class="skill-chip">Google Search Console</div>
+            <div class="skill-chip">Google Analytics</div>
+            <div class="skill-chip">Google Trends</div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="glass-card tilt-card category-card">
+          <div class="card-shine"></div>
+          <h3 class="category-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="12 8 18 12 12 16 12 8"></polygon>
+            </svg>
+            Campaigns & Socials
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-chip">Google Ads</div>
+            <div class="skill-chip">Meta Ads (Facebook & Instagram Ads)</div>
+            <div class="skill-chip">Content Marketing</div>
+            <div class="skill-chip">Social Media Marketing</div>
+          </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="glass-card tilt-card category-card">
+          <div class="card-shine"></div>
+          <h3 class="category-title">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            Development & Future
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-chip">Web Development</div>
+            <div class="skill-chip">AI Tools & Automation</div>
+            <div class="skill-chip">Personal Branding</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="reveal-on-scroll">Professional Experience</h2>
+      <div class="timeline reveal-on-scroll">
+        
+        <!-- Experience Item 1 (Oldest: May 2024) -->
+        <div class="timeline-container left">
+          <div class="timeline-card glass-card">
+            <div class="timeline-date">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              May 2024 – Oct 2024
+            </div>
+            <h3 class="timeline-title">Sales Executive</h3>
+            <div class="timeline-company">Hindustan Wellness <span style="color: var(--text-secondary); font-size: 0.8125rem;">&bull; Full-time, On-site &bull; Preet Vihar, Delhi, India</span></div>
+            <p class="timeline-desc">Successfully executed healthcare service sales and relationship building, maintaining continuous direct communications with clients, developing customer acquisition strategies, and driving growth.</p>
+            <div class="timeline-skills">
+              <span class="mini-chip">Sales</span>
+              <span class="mini-chip">Sales Execution</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 2 (Intern: Jun 2025) -->
+        <div class="timeline-container right">
+          <div class="timeline-card glass-card">
+            <div class="timeline-date">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Jun 2025 – Nov 2025
+            </div>
+            <h3 class="timeline-title">Intern</h3>
+            <div class="timeline-company">Tatvatech Digital Pvt Ltd <span style="color: var(--text-secondary); font-size: 0.8125rem;">&bull; On-site</span></div>
+            <p class="timeline-desc">Supported multi-channel marketing campaigns. Gained extensive practical exposure implementing targeted email marketing pathways, building structured content campaigns, and operating CMS workflows.</p>
+            <div class="timeline-skills">
+              <span class="mini-chip">Email Marketing</span>
+              <span class="mini-chip">Content Management Systems (CMS)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 3 (Executive: Nov 2025) -->
+        <div class="timeline-container left">
+          <div class="timeline-card glass-card">
+            <div class="timeline-date">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Nov 2025 – Apr 2026
+            </div>
+            <h3 class="timeline-title">Executive</h3>
+            <div class="timeline-company">Tatvatech Digital Pvt Ltd <span style="color: var(--text-secondary); font-size: 0.8125rem;">&bull; Full-time, On-site &bull; Noida, UP, India</span></div>
+            <p class="timeline-desc">Handled marketing deliverables, including search performance analysis, paid Google and Meta Ads optimizations, content audits, and client reporting matrices. Collaborated on expanding brand outreach.</p>
+            <div class="timeline-skills">
+              <span class="mini-chip">SEO</span>
+              <span class="mini-chip">Google Ads</span>
+              <span class="mini-chip">Meta Ads</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education">
+    <div class="container">
+      <h2 class="reveal-on-scroll">Education</h2>
+      <div class="timeline reveal-on-scroll">
+        
+        <!-- Education 1 (Oldest: Nov 2023) -->
+        <div class="timeline-container left">
+          <div class="timeline-card glass-card">
+            <div class="timeline-date">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+              </svg>
+              Nov 2023 – Jul 2026
+            </div>
+            <h3 class="timeline-title">Bachelor of Commerce (BCom)</h3>
+            <div class="timeline-company">Delhi University <span style="color: var(--text-secondary); font-size: 0.8125rem;">&bull; International Business/Trade/Commerce</span></div>
+            <p class="timeline-desc">Rigorous conceptual study focusing on global economics, trade structures, corporate strategy, accounting methodologies, and international market frameworks.</p>
+          </div>
+        </div>
+
+        <!-- Education 2 (Diploma: Oct 2024) -->
+        <div class="timeline-container right">
+          <div class="timeline-card glass-card">
+            <div class="timeline-date">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+              </svg>
+              Oct 2024 – Jun 2025
+            </div>
+            <h3 class="timeline-title">Diploma of Digital Marketing</h3>
+            <div class="timeline-company">Digital Training India <span style="color: var(--color-accent); font-weight: 600; font-size: 0.8125rem;">&bull; Grade: A+</span></div>
+            <p class="timeline-desc">Specialized training programs in Search Engine Optimization, analytics-based client reporting, paid search engines, social media algorithms, and content operations.</p>
+            <div class="timeline-skills">
+              <span class="mini-chip">Search Engine Optimization (SEO)</span>
+              <span class="mini-chip">Google Ads</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="reveal-on-scroll">Contact Me</h2>
+      
+      <div class="contact-grid">
+        <div class="contact-info-card reveal-on-scroll">
+          <div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Let's Connect & Grow Brands</h3>
+            
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h4>Direct Email</h4>
+                <p><a href="mailto:rsinghdev7@gmail.com" style="color: var(--text-primary); font-weight: 500;">rsinghdev7@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-info-content">
+                <h4>Primary Location</h4>
+                <p style="color: var(--text-secondary);">Delhi, India</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-social-pills">
+            <a href="https://www.linkedin.com/in/rohit-singh-dev-530613373/" target="_blank" class="btn-3d">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              Connect on LinkedIn
+            </a>
+            <button class="btn-3d secondary" id="copy-email-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy Email Address
+            </button>
+          </div>
+        </div>
+
+        <!-- Contact Form Glass Card -->
+        <div class="glass-card tilt-card reveal-on-scroll">
+          <div class="card-shine"></div>
+          <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="form-name">Your Name</label>
+              <input type="text" id="form-name" class="form-control" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-email">Your Email Address</label>
+              <input type="email" id="form-email" class="form-control" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Your Message</label>
+              <textarea id="form-message" class="form-control" placeholder="Hi Rohit, I'd love to connect..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-3d" style="width: 100%; margin-top: 1rem;">
+              Send Message
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-text">
+        &copy; 2026 Rohit Singh Dev. All rights reserved.
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/rohit-singh-dev-530613373/" target="_blank" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: color 0.2s ease;">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="mailto:rsinghdev7@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: color 0.2s ease;">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back-to-Top Button -->
+  <button class="back-to-top" id="scroll-top-btn" aria-label="Scroll to Top">
+    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- Toast Element -->
+  <div class="toast" id="toast-notif">
+    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="color: var(--color-accent);">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span id="toast-text">Toast message</span>
+  </div>
+
+  <script>
+    // 1. Dark/Light Mode Switcher
+    const themeBtn = document.getElementById('theme-btn');
+    const storedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    
+    document.documentElement.setAttribute('data-theme', storedTheme);
+
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('portfolio-theme', newTheme);
+      showToast(`Switched to ${newTheme} mode`);
+    });
+
+    // 2. Mobile Nav Burger Toggler
+    const burgerBtn = document.getElementById('burger-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    burgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // 3. Dynamic Interactive 3D Tilt Effect
+    document.querySelectorAll('.tilt-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const xc = rect.width / 2;
+        const yc = rect.height / 2;
+        const angleX = (yc - y) / 14; 
+        const angleY = (x - xc) / 14; 
+        
+        card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
+        
+        const shine = card.querySelector('.card-shine');
+        if (shine) {
+          const shineX = (x / rect.width) * 100;
+          const shineY = (y / rect.height) * 100;
+          shine.style.background = `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(var(--color-accent-rgb), 0.15) 0%, rgba(var(--color-accent-rgb), 0) 75%)`;
+        }
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        const shine = card.querySelector('.card-shine');
+        if (shine) {
+          shine.style.background = 'none';
+        }
+      });
+    });
+
+    // 4. Parallax Background & Hero Illustration Motion
+    window.addEventListener('mousemove', e => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      
+      // Background orbs
+      document.querySelectorAll('.parallax-bg').forEach(shape => {
+        const speed = parseFloat(shape.getAttribute('data-speed') || '20');
+        const tx = x * speed;
+        const ty = y * speed;
+        shape.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      });
+
+      // Hero illustration layers
+      const baseLayer = document.getElementById('base-layer');
+      const topLayer = document.getElementById('top-layer');
+      const bottomLayer = document.getElementById('bottom-layer');
+      if (baseLayer && topLayer && bottomLayer) {
+        baseLayer.style.transform = `rotateY(${-15 + x * 20}deg) rotateX(${12 + y * 20}deg) translateZ(0px)`;
+        topLayer.style.transform = `rotateY(${-15 + x * 25}deg) rotateX(${12 + y * 25}deg) translateZ(45px)`;
+        bottomLayer.style.transform = `rotateY(${-15 + x * 15}deg) rotateX(${12 + y * 15}deg) translateZ(25px)`;
+      }
+    });
+
+    // 5. Scroll Reveal & Scroll Spy Combined
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    window.addEventListener('scroll', () => {
+      // Back to top button visibility
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+
+      // Scroll Spy highlight link
+      let currentSectionId = 'home';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 200;
+        const height = sec.offsetHeight;
+        if (window.scrollY >= top && window.scrollY < top + height) {
+          currentSectionId = sec.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${currentSectionId}`) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 6. Copy Email Handler
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    copyEmailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('rsinghdev7@gmail.com').then(() => {
+        showToast('Email address copied to clipboard!');
+      }).catch(() => {
+        showToast('Failed to copy. Email: rsinghdev7@gmail.com');
+      });
+    });
+
+    // 7. Contact Form Mailto Handler
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const email = document.getElementById('form-email').value;
+      const message = document.getElementById('form-message').value;
+
+      const subject = encodeURIComponent(`Portfolio Message from ${name}`);
+      const body = encodeURIComponent(`Hi Rohit,\n\nI visited your digital portfolio and wanted to get in touch!\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      
+      showToast('Opening default email client...');
+      
+      setTimeout(() => {
+        window.location.href = `mailto:rsinghdev7@gmail.com?subject=${subject}&body=${body}`;
+      }, 800);
+    }
+
+    // 8. Custom Toast Notification
+    let toastTimeout;
+    function showToast(text) {
+      const toast = document.getElementById('toast-notif');
+      const toastText = document.getElementById('toast-text');
+      toastText.textContent = text;
+      
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
